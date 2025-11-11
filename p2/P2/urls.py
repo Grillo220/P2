@@ -21,12 +21,15 @@ from django.urls import path
 urlpatterns = [
     path("admin/", admin.site.urls),
 ]
+from django.urls import  include
+
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),
-    path('addon1/', include('addon1.urls')),
-    path('addon2/', include('addon2.urls')),
+    path('', views.index, name='index'),  # esta es la URL del index
+    path('addon1/', views.addon1, name='addon1'),
+    path('addon2/', views.addon2, name='addon2'),
 ]
